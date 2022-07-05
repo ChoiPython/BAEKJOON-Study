@@ -7,12 +7,26 @@
 줄을 서 있는 사람의 수 N과 각 사람이 돈을 인출하는데 걸리는 시간 Pi가 주어졌을 때, 각 사람이 돈을 인출하는데 필요한 시간의 합의 최솟값을 구하는 프로그램을 작성하시오.'''
 
 
+def min_val(a) :                        # 최솟값 도출
+    min = 999999999999999999999999999
+    for i in a :
+        if i < min :
+            min = i
+    a.remove(min)
+    return min, a
+
+n = int(input())    # 사람 수
+a = list(map(int, input().split()))     # 인출 시간
+
+out = 0
+out_data= list()
+for i in range(1, n + 1):
+    min ,a = min_val(a)
+    out += min
+    out_data.append(out)
 
 
-
-
-
-
+print(sum(out_data))
 
 
 
