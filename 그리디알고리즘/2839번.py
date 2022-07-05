@@ -6,11 +6,31 @@
 
 
 
+''' 메인 기능
+for i in range(n // plastic_bag2 + 1):
+        if (n - i * plastic_bag2) % plastic_bag1 == 0 :
+            print(i + ((n - i * plastic_bag2) // plastic_bag1))
+            break
+'''
 
+# plastic_bag1 = 3    # 봉지 3kg
+# plastic_bag2 = 5    # 봉지 5kg
 
+n = int(input())
 
+for i in range(n // 5 + 1):
+    min = 99999999999999999999999999
+    if (n - i * 5) % 3 == 0 :
+        x = i + ((n - i * 5) // 3)
 
+    try:
+        if x < min :
+            min = x
 
+    except:
+        min = -1
+
+print(min)
 
 
 
