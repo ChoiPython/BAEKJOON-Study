@@ -13,10 +13,12 @@ count = 0
 for i in range(N):
     a = int(input())
 
-    if K - a > 0 :
+    if K - a >= 0 :
         out_list.append(a)
-        
+
+
 for i in out_list[::-1]:
+    
     while K >= i:
 
         if K < i : 
