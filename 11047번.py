@@ -17,16 +17,27 @@ for i in range(N):
         out_list.append(a)
 
 
-for i in out_list[::-1]:
+# for i in out_list[::-1]:
     
-    while K >= i:
+#     while K >= i:
 
-        if K < i : 
+#         if K < i : 
+#             break
+
+#         else:
+#             count += 1
+#             K -= i
+
+for i in out_list[::-1]:
+    while K >= i :
+
+        if K < i :
             break
 
         else:
-            count += 1
-            K -= i
+            m = K // i
+            count += m
+            K -= m * i
 
 print(count)
 
