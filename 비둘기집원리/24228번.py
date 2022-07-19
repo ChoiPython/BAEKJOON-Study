@@ -3,10 +3,7 @@
 
 n, r = map(int, input().split())
 
-if n %  2 != 0 :
-    print((r-1)*n + 1)
-else:
-    print((r-1)*n -1)
+print(n+1 + (r-1)*2)
 
 
 
