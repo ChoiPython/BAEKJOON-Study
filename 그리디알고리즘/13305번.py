@@ -2,28 +2,21 @@
 
 n = int(input())
 
-road = [i for i in map(int, input().split())]       # km
-oil = [j for j in map(int, input().split())]        # price
+road = [i for i in map(int, input().split())]
+oil =  [i for i in map(int, input().split())]
 
-cost = 0
+all = oil[0] * road[0]
+data = oil[0]
 
-m_oil = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+for i in range(1, n-1) :
+    
+    if data > oil[i] :
 
-for i in range(n-1) :
-    com_data = 0
+        data = oil[i]
 
-    k = 0
-    for k in range(i) :
-        com_data += oil[k] * road[k]
-        k = k+1
+    all += data * road[i]
 
-    for j in range(n-i-1) :
-        com_data += oil[i] * road[k:][j]
-
-    if m_oil > com_data :
-        m_oil = com_data
-
-print(m_oil)
+print(all)
 
 
 
