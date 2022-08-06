@@ -20,14 +20,12 @@ while '' in s1 :
 while '' in s2:
     s2.remove('')
 
-if len(s1) > len(s2) :
+if len(s1) >= len(s2) :
     print(len(s2))
     
 elif len(s1) < len(s2) :
     print(len(s1))
 
-else:
-    print(len(s1))
 
 
 
