@@ -22,13 +22,14 @@ in_data = []
 out = 0
 
 for j in range(2, len(a)) :
-    if sum_data < a[j] :
+    if sum_data <= a[j] :
             out += sum_data
             sum_data += a[j]
             in_data.append(sum_data)
             # sum_data = 0
 
     else:
+        in_data.append(sum_data)
         sum_data = 0
         sum_data += a[j]
 
