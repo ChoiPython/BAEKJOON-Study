@@ -10,30 +10,31 @@
 
 이러한 조건을 만족시키면서, 진영 주식회사가 이번 신규 사원 채용에서 선발할 수 있는 신입사원의 최대 인원수를 구하는 프로그램을 작성하시오.'''
 
+import sys
+
 t = int(input())
 
 grade = []
-count = []
-com_data = []
+out = []
 
 for i in range(t) :
-    
-    n = int(input())
+    count = 1
+    n = int(input())            
 
-    for j in range(n) :
-        a = list(map(int, input().split()))
+    for j in range(n) :                         # 입력받은 n개수 만큰 값 입력받기
+        a = list(map(int, sys.stdin.readline().split()))
         grade.append(a)
-    count.append(len(grade))
 
-    for m in range(n) :
-        com_data = grade[m]
-        for k in range(n) :
-            if com_data[0] > grade[k][0] and com_data[1] > grade[k][1] :
-                count[i] -= 1
-                break
-            
-    grade = []
-    
-for l in count :
+    grade.sort()
+    comdata = grade[0][1]
+
+    for f in range(1, n) :
+        if comdata > grade[f][1] :
+            count += 1
+            comdata = grade[f][1]
+
+    out.append(count)
+    grade = []                          # 초기화
+     
+for l in out :
     print(l)
-
