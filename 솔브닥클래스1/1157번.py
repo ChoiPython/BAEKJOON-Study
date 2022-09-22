@@ -88,6 +88,7 @@ for i in n :
         num[25] += 1
 
 count = 0
+
 for i in num :
     if i == max(num) :
         count += 1
