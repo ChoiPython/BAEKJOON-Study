@@ -30,6 +30,7 @@ N개보다 많이 만드는 것도 N개를 만드는 것에 포함된다.
 
 # print(out)
 
+
 k, n = map(int, input().split())
 
 lan = []
@@ -37,19 +38,48 @@ lan = []
 for i in range(k) :     # 길이 입력
     lan.append(int(input()))
 
-sumv = 0
-maxv = sum(lan) // n
 
-while True :
+
+# sumv = 0
+# maxv = sum(lan) // n
+
+# while True :
         
-    for i in lan :
-        sumv += i // maxv
+#     for i in lan :
+#         sumv += i // maxv
 
-    if sumv >= n :
-        out = maxv
-        break
+#     if sumv >= n :
+#         out = maxv
+#         break
 
-    maxv -= 1
-    sumv = 0
+#     maxv -= 1
+#     sumv = 0
 
-print(out)
+# print(out)
+
+# 이진탐색 알고리즘 
+# 시작과 끝 범위(1 ~ 젤 긴 랜선)를 활용하여 중간값을 기준으로 분리하여 절반은 판단하지 않아도 됨
+
+
+
+start = 1
+end = max(lan) 
+
+while start <= end:
+    mid = (start + end) // 2
+    lines = 0
+
+    for i in lan:
+        lines += i // mid
+
+    if lines >= n :
+        start = mid + 1
+
+    else:
+        end = mid - 1
+
+print(end)
+
+
+
+
