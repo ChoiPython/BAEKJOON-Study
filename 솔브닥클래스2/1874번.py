@@ -14,7 +14,7 @@
 이를 계산하는 프로그램을 작성하라.
 '''
 
-
+# No -> 출력 해야함
 n = int(input())
 
 num = [int(input()) for i in range(n)]
