@@ -6,27 +6,41 @@ import sys
 
 M, N = map(int, sys.stdin.readline().split())
 
-data = [data for data in range(2, N + 1)]
+# 어떤 수의 제곱근
+for i in range(M, N + 1) :  # 2 ~ N+1
+    if i == 1 :
+        continue
 
-for i in range(2, N + 1) :  # 2 ~ N+1
-    mul = 1
+    for j in range(2, int(i**0.5) + 1) :
+        if i % j == 0:
+            break
 
-    if i < M :
-        while i * mul in data:
-            data.remove(i * mul)
-            mul += 1
+    else:
+        print(i)
+
+
+    
+# 에라토스테네스의 체 단순 반복 - 전체 탐색
+# data = [data for data in range(2, N + 1)]
+# for i in range(2, N + 1) :  # 2 ~ N+1
+#     mul = 1
+
+#     if i < M :
+#         while i * mul in data:
+#             data.remove(i * mul)
+#             mul += 1
         
-    else: 
-        while i * mul <= N:
-            if mul == 1 and i in data:
-                mul += 1
-                print(i)
-                data.remove(i)
+#     else:
+#         while i * mul <= N:
+#             if mul == 1 and i in data:
+#                 mul += 1
+#                 print(i)
+#                 data.remove(i)
 
-            else: 
-                try:
-                    data.remove(i * mul)
-                    mul += 1
+#             else: 
+#                 try:
+#                     data.remove(i * mul)
+#                     mul += 1
                     
-                except:
-                    mul += 1
+#                 except:
+#                     mul += 1
