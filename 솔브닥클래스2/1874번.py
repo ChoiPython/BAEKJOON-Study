@@ -17,52 +17,104 @@
 # No -> 출력 해야함
 n = int(input())
 
+# 수열 입력
 num = [int(input()) for i in range(n)]
+
+stack_list = []
 com = []
 out = []
 start = 1
 plus = 0
 
-def stack(start, num, com, out) :
-    print("start : {}".format(start))
-    print("num : {}".format(num))
-    for i in range(start, num + 1) :
-        print("append : {}".format(i))
+def stack(start, num, com, out, stack_list) :
+    returnValue = True
+    # pop 
+    try:
+        for i in range(start, num + 1) :
 
-        if num in com :
-            pass
+                if num in com :
+                    pass
 
-        else:
-            com.append(i)
+                else:
+                    com.append(i)
 
-        if com[-1] == num :
-            out.append('+')
+                # 단순히 푸시 팝만 하면 안됨 - 모든경우가 다 되버린다.
+                if com[-1] > num :
+                    returnValue = False
+                    print("RetrunfValue = False")
+                    break
+
+                # push
+                else:
+                    print("push")
+                    stack_list.append(i)
+                    out.append('+')
+                    print(stack_list)
+
+        # pop
+        if num in stack_list:
+            print("pop")
+            stack_list.remove(i)
             out.append('-')
-            print(com, '\npop')
+            # pop시킨후 value 저장 -> No 경우체크 -> 배열이 다르면 NO
             com.pop(-1)
-            print(com)
-            break
+            print(stack_list)
 
-        else:
-            out.append('+')
+
+    except Exception as e:
+        print("except발생 : {}".format(e))
+        returnValue = False
             
-    return com, out
+    return com, out, returnValue, stack_list
 
 # 첫번째 숫자 만큼 push는 해줘야함 + pop 한개
 # pop을 기준으로 세트 분리
 for i in range(len(num)) :
-    if start < num[i] :
-        com, out = stack(start + plus, num[i], com, out)
+    print("start = {}, num = {}, plus = {}".format(start, num[i], plus))
+    if start <= num[i] :
+        com, out, returnValue, stack_list = stack(start + plus, num[i], com, out, stack_list)
         start = num[i]
 
+        if returnValue == False :
+            break
+
+    # start > num[i]
     else:
-        plus += 1
-        com.pop(-1)
-        out.append('-')
+        try :
+            if num[i] > num[i + 1]:
+                com.pop(-1)
+                out.append('-')
+                plus += 1
 
-print(out)
+        except(IndexError):
+            pass
+        
+        except:
+            returnValue = False
+
+# NO 상황
+if returnValue == False:
+    print("NO")
+
+else:
+    for i in out :
+        print(i)
 
 
+
+# false - No에 대한 예외사항 일반화에 해당하지 않음
+#  compare = -1
+# for i in range(len(num)-1):
+#     # 현재보다 다음값이 크고 그 다음값과 2의 차이가 난다면 No
+#     try:
+#         if compare < num[i] :
+#             compare = num[i]
+#             if compare > num[i+1] + 1 :
+#                 print("NO")
+#                 exit()
+
+#     except(IndexError):
+#         break
 
 
 
