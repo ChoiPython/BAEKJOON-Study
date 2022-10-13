@@ -20,101 +20,63 @@ n = int(input())
 # 수열 입력
 num = [int(input()) for i in range(n)]
 
-stack_list = []
-com = []
+# 숫자 직접 넣어보면서 비교하기 위한 리스트
+push_list = []
+
+# 결과 리스트
 out = []
-start = 1
-plus = 0
 
-def stack(start, num, com, out, stack_list) :
-    returnValue = True
-    # pop 
-    try:
-        for i in range(start, num + 1) :
+start = 0       # push 시작 벨류
+index = 0       # num 인덱스 추출
+plus = 0        # num과 인덱스 맞추기 위한
 
-                if num in com :
-                    pass
+while start <= n + 1:
+    # 스텍 리스트가 공백일 경우
+    if not push_list:
+        push_list.append(start + 1)
+        out.append('+')
+        start += 1
 
-                else:
-                    com.append(i)
-
-                # 단순히 푸시 팝만 하면 안됨 - 모든경우가 다 되버린다.
-                if com[-1] > num :
-                    returnValue = False
-                    print("RetrunfValue = False")
-                    break
-
-                # push
-                else:
-                    print("push")
-                    stack_list.append(i)
-                    out.append('+')
-                    print(stack_list)
-
-        # pop
-        if num in stack_list:
-            print("pop")
-            stack_list.remove(i)
-            out.append('-')
-            # pop시킨후 value 저장 -> No 경우체크 -> 배열이 다르면 NO
-            com.pop(-1)
-            print(stack_list)
-
-
-    except Exception as e:
-        print("except발생 : {}".format(e))
-        returnValue = False
-            
-    return com, out, returnValue, stack_list
-
-# 첫번째 숫자 만큼 push는 해줘야함 + pop 한개
-# pop을 기준으로 세트 분리
-for i in range(len(num)) :
-    print("start = {}, num = {}, plus = {}".format(start, num[i], plus))
-    if start <= num[i] :
-        com, out, returnValue, stack_list = stack(start + plus, num[i], com, out, stack_list)
-        start = num[i]
-
-        if returnValue == False :
+    # push 
+    elif push_list[-1] < num[index] :
+        push_list.append(start + 1)
+        out.append('+')
+        # print("push : {}".format(push_list))
+        # push 후 
+        start += 1
+        
+    # pp에 저장하고 num[index]와 다르면 break후 NO 출력하자
+    else:
+        # NO 상황
+        if push_list[-1] != num[index] :
+            out.append('NO')
             break
 
-    # start > num[i]
-    else:
-        try :
-            if num[i] > num[i + 1]:
-                com.pop(-1)
+        try:
+            while push_list[-1] == num[index]:
                 out.append('-')
-                plus += 1
+                index += 1
 
-        except(IndexError):
-            pass
-        
-        except:
-            returnValue = False
 
-# NO 상황
-if returnValue == False:
-    print("NO")
+        # push_lisf가 비워지거나 index가 num의 범위를 벗어낫을 때 종료
+        except (IndexError):    
+            # print("EXCEPT")
+            out.append('NO')
+            break
 
+
+if 'NO' in out :
+    print('NO')
+    
 else:
     for i in out :
         print(i)
+    
 
 
 
-# false - No에 대한 예외사항 일반화에 해당하지 않음
-#  compare = -1
-# for i in range(len(num)-1):
-#     # 현재보다 다음값이 크고 그 다음값과 2의 차이가 난다면 No
-#     try:
-#         if compare < num[i] :
-#             compare = num[i]
-#             if compare > num[i+1] + 1 :
-#                 print("NO")
-#                 exit()
 
-#     except(IndexError):
-#         break
+
 
 
 
