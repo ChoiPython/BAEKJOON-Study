@@ -21,57 +21,39 @@ n = int(input())
 num = [int(input()) for i in range(n)]
 
 # 숫자 직접 넣어보면서 비교하기 위한 리스트
-push_list = []
+push_list = [1]
+
+# 실패 확인 변수
+false = True
 
 # 결과 리스트
 out = []
-
-start = 0       # push 시작 벨류
+start = 1       # push 시작 벨류
 index = 0       # num 인덱스 추출
-plus = 0        # num과 인덱스 맞추기 위한
 
-while start <= n + 1:
-    # 스텍 리스트가 공백일 경우
-    if not push_list:
-        push_list.append(start + 1)
+for i in range(len(num)) :
+    # push
+    while start <= num[i]:
+        push_list.append(start)
         out.append('+')
         start += 1
 
-    # push 
-    elif push_list[-1] < num[index] :
-        push_list.append(start + 1)
-        out.append('+')
-        # print("push : {}".format(push_list))
-        # push 후 
-        start += 1
-        
-    # pp에 저장하고 num[index]와 다르면 break후 NO 출력하자
+    # pop -> stack 구조상 마지막 pop
+    pp = push_list.pop(-1)
+
+    # pp와 num[i]이 다를경우
+    if pp != num[i] :
+        false = False
+        print('NO')
+        break
+
+    # pp와 num[i]가 같을 경우 - 정상
     else:
-        # NO 상황
-        if push_list[-1] != num[index] :
-            out.append('NO')
-            break
-
-        try:
-            while push_list[-1] == num[index]:
-                out.append('-')
-                index += 1
-
-
-        # push_lisf가 비워지거나 index가 num의 범위를 벗어낫을 때 종료
-        except (IndexError):    
-            # print("EXCEPT")
-            out.append('NO')
-            break
-
-
-if 'NO' in out :
-    print('NO')
-    
-else:
+        out.append('-')
+        
+if false == True:
     for i in out :
         print(i)
-    
 
 
 
