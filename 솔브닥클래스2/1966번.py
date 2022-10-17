@@ -43,20 +43,13 @@ for i in range(case) :
             pos_pop = pos_index.pop(0)
             outv += 1
 
+            # m과 고유 인덱스가 같을 경우
             if m == pos_pop :
                 out.append(outv)
                 break
-            
+
             # index 초기화
-            index = pos[0]
-
-                
-
-
-
-
-
-            
+            index = pos[0] 
         
 for i in out :
     print(i)
