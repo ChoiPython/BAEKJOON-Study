@@ -25,53 +25,39 @@ for i in range(case) :
     # 중요도 : 중복O
     pos = list(map(int, input().split()))
     
-    # 문서 중요도
-    doc = pos[m] 
+    # pos 인덱스 조작 
+    pos_index = [a for a in range(n)]
 
     # 리스트 인덱스 조작
     index = pos[0]
-    count = 0
-    outv = 0     # 출력 순서
-    popv = 0
+    outv = 0    # 출력 순서
 
-    while True:
-        try:
-            # 중요도 높은 것 발견
-            if index < max(pos) :        
-                pos= Reback(pos)
-                # index 재지정
-                index = pos[0]
+    while True :
+        if index < max(pos) :
+            pos, pos_index = Reback(pos), Reback(pos_index)
+            index = pos[0]
 
-            # 조건에 맞는 출력 상황
-            elif doc == pos[0] and m == count + popv :
-                out.append(outv + 1)
+        elif index == max(pos) :
+            # index가 가장 크다면 pop
+            pos.pop(0)
+            pos_pop = pos_index.pop(0)
+            outv += 1
+
+            if m == pos_pop :
+                out.append(outv)
                 break
-
-            elif index == max(pos) and count == popv :
-                pos.pop(0)
-                count = 1 + popv
-                popv += 1
-                index = pos[0]
-                outv += 1
-                continue
-
-            # 다른 
-            else:
-                pos.pop(0)
-                index = pos[0]
-                outv += 1
-                
             
-            count += 1
+            # index 초기화
+            index = pos[0]
 
-            # 한 바퀴 진행 후 초기화
-            if count >= n :
-                count = 0
-                n -= 1
-        except:
-            # out.append(outv + 1)
-            break
+                
 
+
+
+
+
+            
+        
 for i in out :
     print(i)
 
