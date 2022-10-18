@@ -7,11 +7,11 @@
 
 '''
 
+import sys
 
-n = int(input())
+n = int(sys.stdin.readline())
 
-num = [int(input()) for i in range(n)]
-
+num = [int(sys.stdin.readline()) for i in range(n)]
 
 # 산술평균
 n_sum = sum(num)
