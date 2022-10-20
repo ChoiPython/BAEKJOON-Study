@@ -8,6 +8,7 @@
 '''
 
 import sys
+from typing import Counter
 
 n = int(sys.stdin.readline())
 
@@ -22,34 +23,29 @@ n_sort = sorted(num)
 print(n_sort[n // 2])
 
 # 최빈값
-max_most = -1
 n_most = num.copy()
-same = [0]
+most_num = 0 # output
+# Counter().most_common() -> 최빈값을 (원소, 빈도수)상태 리스트로 바뀜
+count = Counter(n_most).most_common()
+# 개수가 2개 이상이며 최빈값이 2개이상일 때
+if len(count) > 1 and count[0][1] == count[1][1] :
 
-for i in range(len(num)) :
-    most = 0
-    # 각 숫자 개수 세기
-    while num[i] in n_most:
-        most += 1
-        n_most.remove(num[i])
+    index = 1
+    while True:
+        try:
+            if count[0][1] > count[index][1] :
+                count.remove(count[index])
+            else:
+                index += 1
 
-    if max_most < most :
-        max_most = most
-        most_num = num[i]   # 해당 숫자 저장
-        # same에 2개 이상 있을 경우
-        if len(same) > 1 :
-            same.clear()
-            same.append(0)
-
-        same[-1] = num[i]
-
-    elif max_most == most :
-        same.append(num[i])
-        same.sort()
-        most_num = same[1]
-
-print(most_num)
+        except (IndexError):
+            break   
         
+    count.sort()
+    print(count[1][0])
+
+else:
+    print(count[0][0])
 
 # 범위
 print(max(num) - min(num))
