@@ -6,24 +6,22 @@ N이 주어졌을 때, 제일 마지막에 남게 되는 카드를 구하는 프
 
 '''
 
-def Reback(num) :
-    num.append(num.pop(0))
-    return num
-
-def Throw(num) :
-    num.pop(0)
-    return num
-
 n = int(input())
 
 num = [a for a in range(1, n + 1)]
-index = 0
-while len(num) != 1:
-    num = Throw(num)
-    print(num)
 
-    print(num)
-    num = Reback(num)
-    print()
+
+# 짝수 
+if n % 2 == 0 :
+
+    pass
+
+
+# 홀수 
+else:
     
+    pass
+
 print(num[0])
+
+

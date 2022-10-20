@@ -47,7 +47,6 @@ for i in range(len(num)) :
         same.append(num[i])
         same.sort()
         most_num = same[1]
-        
 
 print(most_num)
         
