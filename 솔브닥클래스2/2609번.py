@@ -30,16 +30,10 @@ else:
 print(gcd)
 
 # 최소공배수
-lcm = 0
-i = 1
-
-while True :
-    # gcd * i 
-    if gcd * i % n == 0 and gcd * i % m == 0:
-        lcm = gcd * i
-        break
-
-    i += 1
-
+lcm = n * m // gcd
 print(lcm)
+
+'''
+math 사용
+'''
 
