@@ -6,58 +6,28 @@
 적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값을 출력한다.
 
 '''
+
 import sys
 n, m = map(int, sys.stdin.readline().split())
 num = list(map(int, sys.stdin.readline().split()))
-
 num.sort()
-h = num[len(num) // 2 ]
+start, end = 1, max(num)
 
-cut = 0
-for i in num :
-    if i - h < 0 :
-        pass
+while start <= end :
+    mid = (start+end) // 2
 
-    else :
-        cut += i - h
+    all = 0
+    for i in num :
+        if i > mid :
+            all += i - mid
 
-while True:
-    if cut > m :
-        cut = 0
-        for i in num :
-            if i - h < 0 :
-                pass
-            
-            else :
-                cut += i - h
-
-        if cut == m:
-            print(h)
-            break
-        
-
-        h += 1
+    if all >= m :
+        start = mid + 1
 
     else:
-        cut = 0
-        for i in num :
-            if i - h < 0 :
-                pass
-            
-            else :
-                cut += i - h  
-
-        if cut >= m :
-            print(h)
-
-            break    
-        h -= 1
-
-
-
-
-    
+        end = mid - 1
         
+print(end)
 
 
 
