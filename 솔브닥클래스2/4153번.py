@@ -14,7 +14,6 @@ while True :
         a = num.pop(num.index(max(num)))
         b = num[0]
         c = num[1]
-        print(num, a, b, c)
 
         if a**2 == b ** 2 + c ** 2:
             print('right')
