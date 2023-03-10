@@ -21,7 +21,6 @@ lastpoint = n
 out = []
 
 while len(circle) != 0 :
-    print(point, lastpoint)
     out.append(circle.pop(point))
     point = point - 1 + k
     lastpoint -= 1
