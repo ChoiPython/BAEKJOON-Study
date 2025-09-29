@@ -8,7 +8,76 @@
 짝을 이루는 두 괄호가 있을 때, 그 사이에 있는 문자열도 균형이 잡혀야 한다.
 '''
 
+<<<<<<< HEAD
 while True:
+=======
+# 
+# stack = []
+# string = ''
+# while True:
+#     string = input()
+#     box = []
+
+#     if string == '.' :
+#         break
+    
+#     check = 0
+
+#     # 열기, 닫기 개수는 맞지만 매칭되는 괄호 오류는 해결x
+#     for i in range(len(string)) :
+#         # 대괄호 추가
+#         if string[i] == '[' :
+#             box.append('[')
+#             check += 1
+        
+#         # 대괄호 닫기
+#         elif string[i] == ']' :
+#             try :
+
+#                 if box[check - 1] == '[' :
+#                     check -= 1
+#                     box.pop(-1)
+                
+#                 else :
+#                     box.append('false') 
+                    
+#             except :
+#                 box.append('false')
+#                 break
+
+#         # 소괄호 추가
+#         if string[i] == '(' :
+#             box.append('(')
+#             check += 1
+
+#         # 소괄호 닫기
+#         elif string[i] == ')' :
+#             try :
+#                 if box[check - 1] == '(' :
+#                     check -= 1
+#                     box.pop(-1)
+                    
+#                 else:
+#                     box.append('false')
+
+#             except :
+#                 box.append('false')
+    
+#     if len(box) == 0 :
+#         print('yes')
+
+#     else :
+#         print('no')
+
+
+string = ''
+
+while True :
+    string = input()
+    stack = []
+
+    check = -1       # 0 = 소괄호 / 1 = 대괄호
+>>>>>>> 94dbc3a2205e0328146a7e5e4357710163bf2dd6
 
     string = list(map(str, input()))
     bigcount = []
@@ -18,6 +87,7 @@ while True:
     if len(string) == 1 and string[0] == '.' :
         break
 
+<<<<<<< HEAD
     for i in range(len(string)) :
         if string[i] == '(' :
             smallcount.append(i)
@@ -43,7 +113,38 @@ while True:
         success = 0
 
     if success == 1:
+=======
+    count = 0
+
+    for i in string :
+        if i in ['(', ')', '[', ']'] :
+
+            if i == '(' or i == '[' :
+                stack.append(i)
+
+            try :
+                if i == ')' :
+                    if stack[-1] == '(' :
+                        stack.pop(-1)
+                    
+                    else:
+                        stack.append('false')
+
+                elif i == ']' :
+                    if stack[-1] == '[' : 
+                        stack.pop(-1)
+                    
+                    else:
+                        stack.append('false')
+            except :
+                stack.append('false')
+
+    if len(stack) == 0 :
+>>>>>>> 94dbc3a2205e0328146a7e5e4357710163bf2dd6
         print('yes')
 
     else :
         print('no')
+
+
+
