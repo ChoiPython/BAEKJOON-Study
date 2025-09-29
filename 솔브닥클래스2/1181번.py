@@ -20,7 +20,27 @@ data.sort(key = len)
 for i in data :
     print(i)
 
+''' 
+n= int(input())
 
+data = list()
+
+for i in range(n) :
+    voca = input()
+    if voca in data:
+        pass
+    else:
+        data.append(voca)
+
+data.sort()
+data.sort(key = len)
+
+for i in data :
+    print(i)
+
+'''
+
+# set의 특성을 이용해서 if 문의 사용을 줄임
 
 
 
