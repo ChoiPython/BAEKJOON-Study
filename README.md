@@ -1,7 +1,6 @@
 # 📚 BAEKJOON Algorithm Study
 
-자료구조와 알고리즘 기본기를 탄탄하게 다지기 위한 백준(BOJ) 문제 풀이 저장소입니다.<br>
-시간 복잡도와 메모리 효율성을 고려하며 최적의 코드를 작성하기 위해 노력합니다.
+자료구조와 알고리즘 기본기를 탄탄하게 다지기 위한 백준(BOJ) 문제 풀이 저장소!<br>
 
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
 <img src="https://img.shields.io/badge/Algorithm-FF9E0F?style=for-the-badge&logo=leetcode&logoColor=white">
