@@ -13,8 +13,7 @@
 
 <br>
 
-<a href="https://solved.ac/ChoiPython">
-  <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=ChoiPython" alt="Solved.ac Profile">
+[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=wndud7159)](https://solved.ac/wndud7159)
 </a>
 
 </div>
